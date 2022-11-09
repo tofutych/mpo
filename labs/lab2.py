@@ -132,7 +132,7 @@ def Lab_2_window():
 
     window_lab_2 = tkinter.Tk()
     window_lab_2.wm_title("Вторая лабораторная. Квадратичное программирование.")
-    window_lab_2.geometry("1280x700")
+    window_lab_2.geometry("780x600")
 
     x, y, z = makeData()
 
@@ -166,6 +166,6 @@ def Lab_2_window():
     txt_5.pack(side=TOP, padx=5, pady=5)
 
     btn = Button(window_lab_2, text="Выполнить", width=20, command=draw)
-    btn.pack(side=BOTTOM, padx=5, pady=5, anchor=S)
+    btn.pack(side=TOP, padx=5, pady=5, anchor=NW)
 
     tkinter.mainloop()

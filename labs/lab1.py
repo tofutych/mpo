@@ -62,28 +62,28 @@ def Lab_1_window():
     canvas.get_tk_widget().pack(side=tkinter.LEFT, fill=tkinter.BOTH)
 
     lbl_1 = Label(window_lab_1, text="X")
-    lbl_1.pack(side=TOP, padx=1, pady=1, anchor=NW)
+    lbl_1.pack(side=TOP, padx=5, pady=5)
 
     txt_1 = Entry(window_lab_1, width=10)
-    txt_1.pack(side=TOP, padx=1, pady=1, anchor=NW)
+    txt_1.pack(side=TOP, padx=5, pady=5)
 
     lbl_2 = Label(window_lab_1, text="Y")
-    lbl_2.pack(side=TOP, padx=1, pady=1, anchor=NW)
+    lbl_2.pack(side=TOP, padx=5, pady=5)
 
     txt_2 = Entry(window_lab_1, width=10)
-    txt_2.pack(side=TOP, padx=1, pady=1, anchor=NW)
+    txt_2.pack(side=TOP, padx=5, pady=5)
 
     lbl_3 = Label(window_lab_1, text="Initial step")
-    lbl_3.pack(side=TOP, padx=1, pady=1, anchor=NW)
+    lbl_3.pack(side=TOP, padx=5, pady=5)
 
     txt_3 = Entry(window_lab_1, width=10)
-    txt_3.pack(side=TOP, padx=1, pady=1, anchor=NW)
+    txt_3.pack(side=TOP, padx=5, pady=5)
 
     lbl_4 = Label(window_lab_1, text="Iterations")
-    lbl_4.pack(side=TOP, padx=1, pady=1, anchor=NW)
+    lbl_4.pack(side=TOP, padx=5, pady=5)
 
     txt_4 = Entry(window_lab_1, width=10)
-    txt_4.pack(side=TOP, padx=1, pady=1, anchor=NW)
+    txt_4.pack(side=TOP, padx=5, pady=5)
 
     btn = Button(window_lab_1, text="Выполнить", width=20, command=draw)
     btn.pack(side=TOP, padx=5, pady=5, anchor=NW)
