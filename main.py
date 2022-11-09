@@ -5,6 +5,8 @@ from labs import Lab_1_window
 
 def main():
     window = Tk()
+    window.overrideredirect(True)
+    window.resizable(False, False)
     window.title("Select")
     window.geometry("90x400")
     btn_lab1 = Button(window, text="1", command=Lab_1_window, height=1, width=5)
@@ -21,7 +23,6 @@ def main():
     btn_lab5.grid(row=5, column=0, padx=5, pady=5)
     exit_button.grid(row=10, column=0, padx=10, pady=5)
     exit_button.place(x=15, y=370)
-    window.resizable(False, False)
     window.mainloop()
 
 
