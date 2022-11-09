@@ -1,13 +1,13 @@
+import time
 import tkinter
 from tkinter import *
 from tkinter import scrolledtext
 
 from matplotlib import pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
+                                               NavigationToolbar2Tk)
 
-import time
-
-from Gradient import makeData, Funct_consider
+from Gradient import Funct_consider, makeData
 
 
 def Lab_1_window():

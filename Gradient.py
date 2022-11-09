@@ -1,6 +1,6 @@
+import numdifftools as nd
 import numpy
 import numpy as np
-import numdifftools as nd
 
 
 def makeData():
