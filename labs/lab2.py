@@ -1,3 +1,4 @@
+import time
 import tkinter
 from tkinter import *
 from tkinter import scrolledtext
@@ -10,7 +11,13 @@ from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
 
 def Lab_2_window():
     def f(xgrid, ygrid):
-        return 2 * np.power(xgrid, 2) + 3 * np.power(ygrid, 2) + (4 * xgrid * ygrid) - (6 * xgrid) - (3 * ygrid)
+        return (
+            2 * np.power(xgrid, 2)
+            + 3 * np.power(ygrid, 2)
+            + (4 * xgrid * ygrid)
+            - (6 * xgrid)
+            - (3 * ygrid)
+        )
 
     def get_index(func, elem):
         for i in range(len(func)):
@@ -22,14 +29,18 @@ def Lab_2_window():
         triangle = []
         x0 = float(x1)
         z0 = float(x2)
-        e = 0.15
+        e = 5
         alpha = 2
-        points = [[x0 - alpha / 2, z0 - 0.29 * alpha],
-                  [x0 + alpha / 2, z0 - 0.29 * alpha],
-                  [x0, z0 + 0.58 * alpha]]
-        func = [f(points[0][0], points[0][1]),
-                f(points[1][0], points[1][1]),
-                f(points[2][0], points[2][1])]
+        points = [
+            [x0 - alpha / 2, z0 - 0.29 * alpha],
+            [x0 + alpha / 2, z0 - 0.29 * alpha],
+            [x0, z0 + 0.58 * alpha],
+        ]
+        func = [
+            f(points[0][0], points[0][1]),
+            f(points[1][0], points[1][1]),
+            f(points[2][0], points[2][1]),
+        ]
         triangle.append(list(points))
         x_min = x0
         z_min = z0
@@ -40,7 +51,6 @@ def Lab_2_window():
         while abs(f(x_max, z_max) - min(func)) > e:
             if flag:
                 flag = 0
-                alpha /= 2
                 x0, z0 = points[get_index(func, min(func))]
                 x0 += points[get_index(func, max(func))][0]
                 z0 += points[get_index(func, max(func))][1]
@@ -76,8 +86,6 @@ def Lab_2_window():
                     func.append(f(x0, z0))
                     points.append([x0, z0])
 
-            # print(func,points)
-
             if f(x_min, z_min) > min(func):
                 x_min, z_min = points[get_index(func, min(func))]
                 y_min = min(func)
@@ -87,24 +95,29 @@ def Lab_2_window():
         x_min = round(x_min, 2)
         z_min = round(z_min, 2)
         y_min = round(y_min, 2)
-        # print(triangle)
         return triangle, x_min, y_min, z_min
 
     def draw():
         fig.clf()
-        ax = fig.add_subplot(projection='3d')
+        ax = fig.add_subplot(projection="3d")
         ax.plot_surface(x, y, z, rstride=10, cstride=10, alpha=0.4, cmap="seismic")
         canvas.draw()
         x1 = txt_1.get()
         x2 = txt_2.get()
-        e = txt_3.get()
-        alpha = txt_4.get()
-        triangle, X, Z, Y = simplex_method(x1, x2, e, alpha)
-        ax.scatter(X, Y, Z, c="red", s=3)
-        canvas.draw()
-        print(f"x = {round(Y, 2)} , y = {round(Y, 2)} , z = {Z}\n")
-
-        window_lab_2.update()
+        triangle, X, Z, Y = simplex_method(x1, x2)
+        for tr in triangle:
+            if min(tr)[1] > Y:
+                ax.scatter(tr[0][0], tr[0][1], min(tr), c="black", s=3)
+                print(
+                    f"x = {round(tr[0][0], 2)} , y = {round(tr[0][1], 2)} , z = {min(tr)[1]}\n"
+                )
+            else:
+                ax.scatter(X, Y, Z, c="red", s=3)
+                print(f"x = {round(X, 2)} , y = {Y}, z = {Z}\n")
+            canvas.draw()
+            window_lab_2.update()
+            delay = txt_5.get()
+            time.sleep(float(delay))
 
     def makeData():
         # Строим сетку в интервале от -10 до 10, имеющую 100 отсчетов по обоим координатам
@@ -119,12 +132,12 @@ def Lab_2_window():
 
     window_lab_2 = tkinter.Tk()
     window_lab_2.wm_title("Вторая лабораторная. Квадратичное программирование.")
-    window_lab_2.geometry('1280x700')
+    window_lab_2.geometry("1280x700")
 
     x, y, z = makeData()
 
     fig = plt.figure()
-    # fig.add_subplot(projection='3d')
+    fig.add_subplot(projection="3d")
 
     canvas = FigureCanvasTkAgg(fig, master=window_lab_2)
     canvas.draw()

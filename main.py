@@ -5,7 +5,6 @@ from labs import Lab_1_window, Lab_2_window
 
 def main():
     window = Tk()
-    window.overrideredirect(True)
     window.resizable(False, False)
     window.title("Select")
     window.geometry("90x400")
