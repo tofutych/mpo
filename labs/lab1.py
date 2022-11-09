@@ -16,7 +16,7 @@ def Lab_1_window():
 
         ax = fig.add_subplot(projection="3d")
         ax.plot_surface(
-            x, y, z, rstride=5, cstride=5, alpha=0.8, cmap="twilight_shifted"
+            x, y, z, rstride=5, cstride=5, alpha=0.8, cmap="gist_rainbow"
         )
         canvas.draw()
 
