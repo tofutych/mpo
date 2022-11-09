@@ -19,7 +19,7 @@ def make_data():
 
 
 def funct_consider(res_x, res_y, res_step, res_iterations):
-    himmelblaus_function = lambda x, y: numpy.power(
+    def himmelblaus_function(x, y): return numpy.power(
         (numpy.power(x, 2) + y - 11), 2
     ) + numpy.power((x + numpy.power(y, 2) - 7), 2)
 
@@ -51,7 +51,7 @@ def gradient(function, input):
 
     ret = np.empty(len(input))
     for i in range(len(input)):
-        fg = lambda x: partial_function(function, input, i, x)
+        def fg(x): return partial_function(function, input, i, x)
         ret[i] = nd.Derivative(fg)(input[i])
     return ret
 

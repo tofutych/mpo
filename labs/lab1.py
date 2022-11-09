@@ -14,7 +14,8 @@ def Lab_1_window():
         fig.clf()
 
         ax = fig.add_subplot(projection="3d")
-        ax.plot_surface(x, y, z, rstride=5, cstride=5, alpha=0.8, cmap="gist_rainbow")
+        ax.plot_surface(x, y, z, rstride=5, cstride=5,
+                        alpha=0.8, cmap="gist_rainbow")
         canvas.draw()
 
         res_x = txt_1.get()

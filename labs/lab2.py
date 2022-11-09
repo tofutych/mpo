@@ -100,7 +100,8 @@ def Lab_2_window():
     def draw():
         fig.clf()
         ax = fig.add_subplot(projection="3d")
-        ax.plot_surface(x, y, z, rstride=10, cstride=10, alpha=0.4, cmap="seismic")
+        ax.plot_surface(x, y, z, rstride=10, cstride=10,
+                        alpha=0.4, cmap="seismic")
         canvas.draw()
         x1 = txt_1.get()
         x2 = txt_2.get()
@@ -131,7 +132,8 @@ def Lab_2_window():
         return xgrid, ygrid, z
 
     window_lab_2 = tkinter.Tk()
-    window_lab_2.wm_title("Вторая лабораторная. Квадратичное программирование.")
+    window_lab_2.wm_title(
+        "Вторая лабораторная. Квадратичное программирование.")
     window_lab_2.geometry("780x600")
 
     x, y, z = makeData()
