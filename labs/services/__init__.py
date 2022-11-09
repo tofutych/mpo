@@ -1,0 +1,1 @@
+from .Gradient import Funct_consider, makeData
