@@ -6,7 +6,7 @@ from matplotlib import pyplot as plt
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
                                                NavigationToolbar2Tk)
 
-from .services import Funct_consider, makeData
+from .services import funct_consider, make_data
 
 
 def Lab_1_window():
@@ -24,7 +24,7 @@ def Lab_1_window():
         res_step = txt_3.get()
         res_iterations = txt_4.get()
 
-        x_cs, y_cs, z_cs = Funct_consider(
+        x_cs, y_cs, z_cs = funct_consider(
             float(res_x), float(res_y), float(res_step), int(res_iterations)
         )
 
@@ -50,7 +50,7 @@ def Lab_1_window():
     window_lab_1.geometry("780x600")
     window_lab_1.resizable(False, False)
 
-    x, y, z = makeData()
+    x, y, z = make_data()
 
     fig = plt.figure()
     fig.add_subplot(projection="3d")

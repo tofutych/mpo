@@ -1,1 +1,1 @@
-from .Gradient import Funct_consider, makeData
+from .gradient import funct_consider, make_data

@@ -3,7 +3,7 @@ import numpy
 import numpy as np
 
 
-def makeData():
+def make_data():
     # Строим сетку в интервале от -10 до 10, имеющую 100 отсчетов по обоим координатам
     x = numpy.linspace(-10, 10, 100)
     y = numpy.linspace(-10, 10, 100)
@@ -18,7 +18,7 @@ def makeData():
     return xgrid, ygrid, z
 
 
-def Funct_consider(res_x, res_y, res_step, res_iterations):
+def funct_consider(res_x, res_y, res_step, res_iterations):
     himmelblaus_function = lambda x, y: numpy.power(
         (numpy.power(x, 2) + y - 11), 2
     ) + numpy.power((x + numpy.power(y, 2) - 7), 2)
