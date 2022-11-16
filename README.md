@@ -1,5 +1,3 @@
-Project structure
-
 ```bash
 .
 ├── labs
