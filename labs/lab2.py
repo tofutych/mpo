@@ -98,6 +98,8 @@ def Lab_2_window():
         return triangle, x_min, y_min, z_min
 
     def draw():
+        print("lAB 2")
+
         fig.clf()
 
         ax = fig.add_subplot(projection="3d")
@@ -111,7 +113,7 @@ def Lab_2_window():
             if min(tr)[1] > Y:
                 ax.scatter(tr[0][0], tr[0][1], min(tr), c="black", s=3)
                 print(
-                    f"x = {round(tr[0][0], 2)} , y = {round(tr[0][1], 2)} , z = {min(tr)[1]}\n"
+                    f"x = {round(tr[0][0], 2)} , y = {round(tr[0][1], 2)} , z = {min(tr)[1]}"
                 )
             else:
                 ax.scatter(X, Y, Z, c="red", s=3)
@@ -120,6 +122,7 @@ def Lab_2_window():
             window_lab_2.update()
             delay = txt_5.get()
             time.sleep(float(delay))
+        print("\n")
 
     def makeData():
         # Строим сетку в интервале от -10 до 10, имеющую 100 отсчетов по обоим координатам

@@ -11,6 +11,8 @@ from .services import funct_consider, make_data
 
 def Lab_1_window():
     def draw():
+        print("lAB 1")
+
         fig.clf()
         
         ax = fig.add_subplot(projection="3d")
@@ -43,7 +45,8 @@ def Lab_1_window():
             delay = 0
 
             time.sleep(float(delay))
-
+        print("\n")
+        
     window_lab_1 = tkinter.Tk()
     window_lab_1.wm_title("Gradient Descent Method")
     window_lab_1.geometry("780x600")
