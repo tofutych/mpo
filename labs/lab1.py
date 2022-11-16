@@ -12,7 +12,7 @@ from .services import funct_consider, make_data
 def Lab_1_window():
     def draw():
         fig.clf()
-
+        
         ax = fig.add_subplot(projection="3d")
         ax.plot_surface(x, y, z, rstride=5, cstride=5,
                         alpha=0.8, cmap="gist_rainbow")

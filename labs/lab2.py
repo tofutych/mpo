@@ -99,6 +99,7 @@ def Lab_2_window():
 
     def draw():
         fig.clf()
+
         ax = fig.add_subplot(projection="3d")
         ax.plot_surface(x, y, z, rstride=10, cstride=10,
                         alpha=0.4, cmap="seismic")

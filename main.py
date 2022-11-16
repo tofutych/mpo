@@ -18,7 +18,7 @@ def main():
                       height=1, width=5)
     btn_lab5 = Button(window, text="5", command=Lab_1_window,
                       height=1, width=5)
-    exit_button = Button(window, text="Exit", command=window.destroy)
+    exit_button = Button(window, text="Exit", command=window.quit)
 
     btn_lab1.grid(row=1, column=0, padx=5, pady=5)
     btn_lab2.grid(row=2, column=0, padx=5, pady=5)
