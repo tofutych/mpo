@@ -1,6 +1,7 @@
 from tkinter import *
 
-from labs import Lab_1_window, Lab_2_window
+from labs import (Lab_1_window, Lab_2_window, Lab_3_window, Lab_4_window,
+                  Lab_5_window)
 
 
 def main():
@@ -12,11 +13,11 @@ def main():
                       height=1, width=5)
     btn_lab2 = Button(window, text="2", command=Lab_2_window,
                       height=1, width=5)
-    btn_lab3 = Button(window, text="3", command=Lab_1_window,
+    btn_lab3 = Button(window, text="3", command=Lab_3_window,
                       height=1, width=5)
-    btn_lab4 = Button(window, text="4", command=Lab_1_window,
+    btn_lab4 = Button(window, text="4", command=Lab_4_window,
                       height=1, width=5)
-    btn_lab5 = Button(window, text="5", command=Lab_1_window,
+    btn_lab5 = Button(window, text="5", command=Lab_5_window,
                       height=1, width=5)
     exit_button = Button(window, text="Exit", command=window.quit)
 
