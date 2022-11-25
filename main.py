@@ -19,6 +19,12 @@ def main():
                       height=1, width=5)
     btn_lab5 = Button(window, text="5", command=Lab_5_window,
                       height=1, width=5)
+    btn_lab6 = Button(window, text="6", command=Lab_5_window,
+                      height=1, width=5)
+    btn_lab7 = Button(window, text="7", command=Lab_5_window,
+                      height=1, width=5)
+    btn_lab8 = Button(window, text="8", command=Lab_5_window,
+                      height=1, width=5)
     exit_button = Button(window, text="Exit", command=window.quit)
 
     btn_lab1.grid(row=1, column=0, padx=5, pady=5)
@@ -26,6 +32,9 @@ def main():
     btn_lab3.grid(row=3, column=0, padx=5, pady=5)
     btn_lab4.grid(row=4, column=0, padx=5, pady=5)
     btn_lab5.grid(row=5, column=0, padx=5, pady=5)
+    btn_lab6.grid(row=6, column=0, padx=5, pady=5)
+    btn_lab7.grid(row=7, column=0, padx=5, pady=5)
+    btn_lab8.grid(row=8, column=0, padx=5, pady=5)
     exit_button.grid(row=10, column=0, padx=10, pady=5)
     exit_button.place(x=15, y=370)
     window.mainloop()
