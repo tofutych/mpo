@@ -59,7 +59,7 @@ class floatbee:
         """Перелет в окрестность места, которое нашла другая пчела. Не в то же самое место! """
 
         # К каждой из координат добавляем случайное значение
-        self.position = [otherpos[n] + random.uniform(-range_list[n], range_list[n]) \
+        self.position = [otherpos[n] + random.uniform(-range_list[n], range_list[n])
                          for n in range(len(otherpos))]
 
         # Проверим, чтобы не выйти за заданные пределы
@@ -70,7 +70,8 @@ class floatbee:
 
     def gotorandom(self):
         # Заполним координаты случайными значениями
-        self.position = [random.uniform(self.minval[n], self.maxval[n]) for n in range(len(self.position))]
+        self.position = [random.uniform(
+            self.minval[n], self.maxval[n]) for n in range(len(self.position))]
         self.checkposition()
         self.calcfitness()
 
@@ -87,8 +88,8 @@ class floatbee:
 class hive:
     """Улей. Управляет пчелами"""
 
-    def __init__(self, scoutbeecount, selectedbeecount, bestbeecount, \
-                 selsitescount, bestsitescount, \
+    def __init__(self, scoutbeecount, selectedbeecount, bestbeecount,
+                 selsitescount, bestsitescount,
                  range_list, beetype):
         """scoutbeecount - Количество пчел-разведчиков
         selectedbeecount - количество пчел, посылаемое на один из лучших участков
@@ -118,7 +119,8 @@ class hive:
         self.bestfitness = -1.0e9
 
         # Начальное заполнение роя пчелами со случайными координатами
-        beecount = scoutbeecount + selectedbeecount * selsitescount + bestbeecount * bestsitescount
+        beecount = scoutbeecount + selectedbeecount * \
+            selsitescount + bestbeecount * bestsitescount
         self.swarm = [beetype() for n in range(beecount)]
 
         # Лучшие и выбранные места
@@ -179,10 +181,12 @@ class hive:
         bee_index = 1
 
         for best_bee in self.bestsites:
-            bee_index = self.sendbees(best_bee.getposition(), bee_index, self.bestbeecount)
+            bee_index = self.sendbees(
+                best_bee.getposition(), bee_index, self.bestbeecount)
 
         for sel_bee in self.selsites:
-            bee_index = self.sendbees(sel_bee.getposition(), bee_index, self.selectedbeecount)
+            bee_index = self.sendbees(
+                sel_bee.getposition(), bee_index, self.selectedbeecount)
 
         # Оставшихся пчел пошлем куда попадет
         for curr_bee in self.swarm[bee_index: -1]:
