@@ -1,20 +1,9 @@
-````bash
-.
-├── labs
-│   ├── __init__.py
-│   ├── lab1.py
-│   ├── lab2.py
-│   ├── lab3.py
-│   ├── lab4.py
-│   ├── lab5.py
-│   ├── lab6.py
-│   ├── lab7.py
-│   ├── lab8.py
-│   └── services
-│       ├── __init__.py
-│       ├── beeexamples.py
-│       ├── beetestfunc.py
-│       ├── gradient.py
-│       └── pybee.py
-├── main.py
+## Usage
+
+```
+$ git clone https://github.com/tofutych/mpo.git && cd mpo
+$ python -m venv venv
+$ . venv/bin/activate
+$ pip install -r requirements.txt
+$ python main.py
 ```
