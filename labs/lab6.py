@@ -105,7 +105,7 @@ def Lab_6_window():
     window_lab_6 = tkinter.Tk()
     window_lab_6.wm_title(
         "Шестая лабораторная. Алгоритм искусственной иммунной сети оптимизации функции Розенброка.")
-    window_lab_6.geometry("780x600")
+    window_lab_6.geometry("800x600")
     window_lab_6.resizable(False, False)
 
     X, Y, Z = get_rosenbrock_surface()
