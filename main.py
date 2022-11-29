@@ -1,7 +1,7 @@
 from tkinter import *
 
 from labs import (Lab_1_window, Lab_2_window, Lab_3_window, Lab_4_window,
-                  Lab_5_window)
+                  Lab_5_window, Lab_6_window, Lab_7_window)
 
 
 def main():
@@ -19,9 +19,9 @@ def main():
                       height=1, width=5)
     btn_lab5 = Button(window, text="5", command=Lab_5_window,
                       height=1, width=5)
-    btn_lab6 = Button(window, text="6", command=Lab_5_window,
+    btn_lab6 = Button(window, text="6", command=Lab_6_window,
                       height=1, width=5)
-    btn_lab7 = Button(window, text="7", command=Lab_5_window,
+    btn_lab7 = Button(window, text="7", command=Lab_7_window,
                       height=1, width=5)
     btn_lab8 = Button(window, text="8", command=Lab_5_window,
                       height=1, width=5)

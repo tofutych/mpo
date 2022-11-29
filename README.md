@@ -1,4 +1,4 @@
-```bash
+````bash
 .
 ├── labs
 │   ├── __init__.py
@@ -7,6 +7,8 @@
 │   ├── lab3.py
 │   ├── lab4.py
 │   ├── lab5.py
+│   ├── lab6.py
+│   ├── lab7.py
 │   └── services
 │       ├── __init__.py
 │       ├── beeexamples.py
