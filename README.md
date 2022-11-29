@@ -9,6 +9,7 @@
 │   ├── lab5.py
 │   ├── lab6.py
 │   ├── lab7.py
+│   ├── lab8.py
 │   └── services
 │       ├── __init__.py
 │       ├── beeexamples.py

@@ -5,3 +5,4 @@ from .lab4 import Lab_4_window
 from .lab5 import Lab_5_window
 from .lab6 import Lab_6_window
 from .lab7 import Lab_7_window
+from .lab8 import Lab_8_window

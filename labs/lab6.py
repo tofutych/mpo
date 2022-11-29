@@ -91,7 +91,7 @@ def Lab_6_window():
             if i != maxIter - 1:
                 ax.scatter(pn[0], pn[1], pn[2], c="black", s=3)
                 print(
-                    f"№{i}. Значение функции = {pn[2]} в точке x = {pn[0]}, y = {pn[1]}\n")
+                    f"№{i}. Значение функции = {pn[2]} в точке x = {pn[0]}, y = {pn[1]}")
             else:
                 ax.scatter(pn[0], pn[1], pn[2], c="red", s=10)
                 print(
