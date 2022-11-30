@@ -9,8 +9,14 @@ from matplotlib import cm
 from matplotlib import pyplot as plt
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
                                                NavigationToolbar2Tk)
-
-
+# BG Аффинность связей антитела и антигена в виде расстояния Хэмминга. p(Xbi, Xgj)= pbg ij
+# Аффнность - это мера близости антитела и антигена (BG афинность)
+"""
+   Размер популяции - S
+   Колво клонов - nc
+   Лучшие из популяции - nb
+   Лучшие из клонов - bs
+"""
 def Lab_6_window():
     def cost_function(x, y):
         return (1 - x) ** 2 + 100 * (y - x ** 2) ** 2
@@ -30,6 +36,7 @@ def Lab_6_window():
             self.pos_x = float(position_x)
             self.pos_y = float(position_y)
 
+            # Шаг 1. Из текущей популяции антител выбираем н антител с максимальной BG-афффинностью.
             self.agents_numb = agents
             self.agents = [[random.uniform(-self.pos_x, self.pos_x), random.uniform(-self.pos_y, self.pos_y), 0.0] for _ in
                            range(self.agents_numb)]
@@ -37,6 +44,7 @@ def Lab_6_window():
             for i in self.agents:
                 i[2] = self.func(i[0], i[1])
 
+            # Шаг 2. Для каждого антитела создаем клонов
             self.best = best
             self.best_clon_numb = best_clon_numb
             self.clon_numb = clons
@@ -51,14 +59,18 @@ def Lab_6_window():
                 for _ in range(self.clon_numb):
                     new_pop.append(pop.copy())
 
+            # Шаг 3. Выполняем мутацию по сложной формуле.
+            # coef - кэф мутации(то есть альфа из формулы)
             for npop in new_pop:
                 npop[0] = npop[0] + coef * random.uniform(-0.5, 0.5)
                 npop[1] = npop[1] + coef * random.uniform(-0.5, 0.5)
                 npop[2] = self.func(npop[0], npop[1])
 
+            # Шаг 4. Определяем БГ аффинность всех антител модицифированного множества и делаем сжатием исключая все антитела кроме лучших.
             new_pop = sorted(new_pop, key=itemgetter(2), reverse=False)[
                 :self.best_clon_numb]
 
+            # Шаг 5. Объединяем популяции и выполняем сжатие с сохранением лучших решений.
             self.agents += new_pop
             self.agents = sorted(self.agents, key=itemgetter(
                 2), reverse=False)[:self.agents_numb]

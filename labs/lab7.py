@@ -2,17 +2,27 @@ import time
 import tkinter
 from random import random
 from tkinter import *
-
+from typing import List
 import matplotlib.animation
 import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
                                                NavigationToolbar2Tk)
+# Хемотаксис - это двигательная реация микроогранизмов на химический раздражитель. 
+# Репродукция - цель механизм - ускорение сходимости алгоритма(интенсификация)
+#         Текущее здоровье - сумма значений фитнес-функции во всех точках траектории бактерии.
 
+# Ликвидация и рассеивание. Хемотаксиса и репродукции обычно недостаточно, потому что эти процедуры
+# не позволяют бактериям покидать райденные ими локальные минимумы(максимумы). Поэтому вводятся ликвидация 
+# и рассеивание. которые призваны преодолеть этот недостаток.
+#     Механизм ликвидации и рассеивания включается после выполнения некоторого числа процедур репродукции
+#      и состоит в следующем: С заданной вероятностью выбираем n < S бактерий и уничтожаем их))))
+#      Вместо уничтоженных в случайной точке пространства создаем нового агента с тем же номером. Число
+#      бактерий после геноцида должно быть таким же как и в начале.
 
 def Lab_7_window():
-    def CostFunction(input):
+    def cost_function(input):
         x = input[0]
         y = input[1]
         result = -((x ** 2) + (y ** 2))
@@ -22,12 +32,10 @@ def Lab_7_window():
         X = np.linspace(-5, 5, 200)
         Y = np.linspace(-5, 5, 200)
         X, Y = np.meshgrid(X, Y)
-
-        Z = CostFunction([X, Y])
+        Z = cost_function([X, Y])
         return X, Y, Z
 
-    class sw(object):
-
+    class SW(object):
         def __init__(self):
             self.__Positions = []
             self.__Gbest = []
@@ -49,25 +57,15 @@ def Lab_7_window():
 
             return list(self.__Gbest)
 
-    class bfo(sw):
-        """
-        Bacteria Foraging Optimization
-        """
-
+    class bfo(SW):
         def __init__(self, n, function, dimension, iteration, lb=-5, ub=5,
                      Nc=2, Ns=12, C=0.2, Ped=1.15):
             """
-            :param n: number of agents
-            :param function: test function
-            :param lb: lower limits for plot axes
-            :param ub: upper limits for plot axes
-            :param dimension: space dimension
-            :param iteration: the number of iterations
-            :param Nc: number of chemotactic steps (default value is 2)
-            :param Ns: swimming length (default value is 12)
-            :param C: the size of step taken in the random direction specified by
-            the tumble (default value is 0.2)
-            :param Ped: elimination-dispersal probability (default value is 1.15)
+            n - колво агентов
+            Nc - количество хемотаксических шагов (default value is 2)
+            Ns - максимальное число шагов вдоль выбранного направления (default value is 12)
+            C - размер шага (default value is 0.2)
+            Ped - вероятность уничтожения бактерии (default value is 1.15)
             """
             super(bfo, self).__init__()
 
@@ -148,7 +146,7 @@ def Lab_7_window():
         agents = int(txt_1.get())
         dimenssion = int(txt_2.get())
         iteration = int(txt_3.get())
-        bf = bfo(agents, CostFunction, dimenssion, iteration)
+        bf = bfo(agents, cost_function, dimenssion, iteration)
         fig.clf()
         ax = fig.add_subplot(projection='3d')
         ax.plot_surface(X, Y, Z, rstride=10, cstride=10,
@@ -160,7 +158,7 @@ def Lab_7_window():
         t = np.array([np.ones(n) * i for i in range(iter)]).flatten()
         b = []
         [[b.append(agent) for agent in epoch] for epoch in agents]
-        c = [CostFunction(x) for x in b]
+        c = [cost_function(x) for x in b]
         a = np.asarray(b)
         # print(f'x: {a[:, 0]},  y: {a[:, 1]}, z: {c}\n')
         df = pd.DataFrame({"time": t, "x": a[:, 0], "y": a[:, 1], "z": c})
@@ -170,7 +168,7 @@ def Lab_7_window():
                 graph.set_facecolor('black')
                 data = df[df['time'] == num]
                 graph._offsets3d = (data.x, data.y, data.z)
-                title.set_text(CostFunction.__name__ + " " * 45 + 'iteration: {}'.format(
+                title.set_text(cost_function.__name__ + " " * 45 + 'iteration: {}'.format(
                     num))
                 delay = txt_5.get()
                 time.sleep(float(delay))
@@ -185,7 +183,7 @@ def Lab_7_window():
                 window_lab_7.update()
                 return
 
-        title = ax.set_title(CostFunction.__name__ +
+        title = ax.set_title(cost_function.__name__ +
                              " " * 45 + f'iteration: {0}')
         data = df[df['time'] == 0]
         graph = ax.scatter(data.x, data.y, data.z, color='black')
