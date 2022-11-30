@@ -12,7 +12,7 @@ from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,
 
 
 def Lab_6_window():
-    def CostFunction(x, y):
+    def cost_function(x, y):
         return (1 - x) ** 2 + 100 * (y - x ** 2) ** 2
 
     def get_rosenbrock_surface():
@@ -20,7 +20,7 @@ def Lab_6_window():
         y = np.arange(-1.0, 3.0, 0.01)
         x_grid, y_grid = np.meshgrid(x, y)
 
-        z_grid = CostFunction(x_grid, y_grid)
+        z_grid = cost_function(x_grid, y_grid)
         return x_grid, y_grid, z_grid
 
     class Immunity:
@@ -76,14 +76,9 @@ def Lab_6_window():
         clon = int(txt_2.get())
         best_pop = int(txt_3.get())
         best_clon = int(txt_4.get())
-        myImmune = Immunity(CostFunction, pop_number, clon,
+        myImmune = Immunity(cost_function, pop_number, clon,
                             best_pop, best_clon, 5, 5)
-        # func - используемая функция
-        # pop_number - размер популяции
-        # clon - кол-во клонов
-        # best_pop - сколько выбираем лучших из популяции
-        # best_clon - сколько выбираем лучших из клонов
-        # pos_x, pos_y - границы графика
+
         maxIter = 60
         for i in range(maxIter):
             myImmune.immune_step(1/(i+1))
