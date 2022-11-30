@@ -87,6 +87,7 @@ def Lab_7_window():
 
             J_last = J[::1]
 
+            # начало хемотаксиса
             for t in range(iteration):
                 J_chem = [J[::1]]
 
@@ -111,12 +112,14 @@ def Lab_7_window():
 
                 J_chem = np.array(J_chem)
 
+                # выбрали живчиков
                 J_health = [(sum(J_chem[:, i]), i) for i in range(n)]
                 J_health.sort(reverse=True)
                 alived_agents = []
                 for i in J_health:
                     alived_agents += [list(self.__agents[i[1]])]
 
+                # репродукция и рассеивания
                 if n_is_even:
                     alived_agents = 2 * alived_agents[:n // 2]
                     self.__agents = np.array(alived_agents)
